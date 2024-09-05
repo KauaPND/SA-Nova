@@ -8,6 +8,7 @@ const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
         <div className="logo">
           <img src="/logo.png" alt="Lost Plushy Logo" /> {/* Exibe o logotipo */}
         </div>
+        
         <h1>Bem-vindo ao Lost Plushy,</h1>
         <p>
           Onde o macabro encontra o adorável e o sinistro se mistura com o reconfortante.

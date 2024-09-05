@@ -33,6 +33,7 @@ const CustomerHistory = ({ onBack }) => {
           { item: 'Pelúcia Foxy', valor: 'R$ 49,90' },
           { item: 'Pelúcia Golden Freddy', valor: 'R$ 60,90' }
         ],
+        salario: 'Não possui',
         tempoNaEmpresa: '1 ano',
         dataDeNascimento: '15/08/1990'
       });
@@ -49,6 +50,7 @@ const CustomerHistory = ({ onBack }) => {
           <h1>Perfil do Usuário</h1>
           <p>Nome: {selectedCustomer.name}</p>
           <p>Cargo: {selectedCustomer.cargo}</p>
+          <p>Salario: {selectedCustomer.salario}</p>
           <p>Tempo na empresa: {selectedCustomer.tempoNaEmpresa}</p>
           <p>Data de nascimento: {selectedCustomer.dataDeNascimento}</p>
 

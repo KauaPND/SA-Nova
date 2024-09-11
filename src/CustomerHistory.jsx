@@ -25,7 +25,7 @@ const CustomerHistory = ({ onBack }) => {
         dataDeNascimento: '01/04/1985'
       });
     } else if (customer.name === 'Morango Tango') {
-      // Dados específicos de Morango Tango com compras
+      // Dados específicos de Morango Tango
       setSelectedCustomer({
         ...customer,
         cargo: 'Cliente Regular',
@@ -38,7 +38,7 @@ const CustomerHistory = ({ onBack }) => {
         dataDeNascimento: '15/08/1990'
       });
     } else {
-      // Para os outros clientes, apenas exibe o nome
+      // Apenas exibe o nome para outros clientes
       setSelectedCustomer(customer);
     }
   };

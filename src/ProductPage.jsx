@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PaymentPage from './PaymentPage'; // Importar a página de pagamento
+import PaymentPage from './PaymentPage'; 
 import './ProductPage.css';
 
 const ProductPage = ({ onBack }) => {
@@ -21,7 +21,7 @@ const ProductPage = ({ onBack }) => {
     <div className="product-page">
       <header className="header">
         <div className="logo">
-          <img src="/logo.png" alt="Lost Plushy Logo" />
+          <img src="./imgs/logo.png" alt="Lost Plushy Logo" />
         </div>
         <div className="icons">
           <span role="img" aria-label="Search" className="icon">🔍</span>
@@ -31,28 +31,28 @@ const ProductPage = ({ onBack }) => {
       
       <div className="product-list">
         <div className="product-card">
-          <img src="/path/to/springtrap.jpg" alt="Pelúcia Spring Trap" />
+          <img src="./imgs/Spring.png" alt="Pelúcia Spring Trap" />
           <div className="product-info">
             <h3>Pelúcia Spring Trap</h3>
             <p>R$ 52,90</p>
           </div>
         </div>
         <div className="product-card">
-          <img src="/path/to/goldenfreddy.jpg" alt="Pelúcia Golden Freddy" />
+          <img src="./imgs/Golden.png" alt="Pelúcia Golden Freddy" />
           <div className="product-info">
             <h3>Pelúcia Golden Freddy</h3>
             <p>R$ 60,90</p>
           </div>
         </div>
         <div className="product-card">
-          <img src="/path/to/foxy.jpg" alt="Pelúcia Foxy" />
+          <img src="./imgs/Foxy.png" alt="Pelúcia Foxy" />
           <div className="product-info">
             <h3>Pelúcia Foxy</h3>
             <p>R$ 49,90</p>
           </div>
         </div>
         <div className="product-card">
-          <img src="/path/to/shadowfreddy.jpg" alt="Pelúcia Shadow Freddy" />
+          <img src="./imgs/Shadow.png" alt="Pelúcia Shadow Freddy" />
           <div className="product-info">
             <h3>Pelúcia Shadow Freddy</h3>
             <p>R$ 60,90</p>

@@ -6,7 +6,7 @@ const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
     <div className="login-page">
       <div className="welcome-section">
         <div className="logo">
-          <img src="/logo.png" alt="Lost Plushy Logo" /> {/* Exibe o logotipo */}
+          <img src="./imgs/logo.png" alt="Lost Plushy Logo" /> {/* Exibe o logotipo */}
         </div>
         
         <h1>Bem-vindo ao Lost Plushy,</h1>
@@ -43,5 +43,6 @@ const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
     </div>
   );
 }
+
 
 export default LoginPage;

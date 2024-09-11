@@ -12,13 +12,13 @@ const PaymentPage = ({ onBack }) => {
         <button className="back-button" onClick={onBack}>⬅️</button>
         <h1>Pagamento</h1>
         <div className="logo">
-          <img src="/logo.png" alt="Lost Plushy Logo" />
+          <img src="./imgs/logo.png" alt="Lost Plushy Logo" />
         </div>
       </header>
 
       <div className="payment-details">
         <div className="product-summary">
-          <img src="/path/to/springtrap.jpg" alt="Pelúcia Spring Trap" />
+          <img src="./imgs/Spring.png" alt="Pelúcia Spring Trap" />
           <div className="product-info">
             <h3>Boneco de Pelúcia "FNAF" Spring Trap</h3>
             <p>R$ 52,90</p>

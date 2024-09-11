@@ -1,14 +1,13 @@
-/* Estilos da página de histórico de clientes */
 .customer-history-container {
     background-color: #ffffff;
     border-radius: 8px;
     padding: 20px;
-    width: 400px; /* Largura ajustada para ser menor */
-    max-width: 90%; /* Largura máxima ajustada */
-    height: 600px; /* Altura ajustada */
-    margin: 20px auto; /* Margem lateral para centralização */
+    width: 400px; 
+    max-width: 90%; 
+    height: 600px; 
+    margin: 20px auto; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Garante que o conteúdo não saia das bordas */
+    overflow: hidden;
     position: relative;
   }
   
@@ -24,7 +23,7 @@
     position: absolute;
     left: 10px;
     top: 10px;
-    width: 40px; /* Tamanho ajustado */
+    width: 40px; 
     height: 40px;
     background: url('path-to-your-icon.png') no-repeat center center;
     background-size: contain;
@@ -40,7 +39,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 250px; /* Altura ajustada */
+    max-height: 250px;
     overflow-y: auto;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -59,7 +58,7 @@
   }
   
   .customer-avatar-placeholder {
-    width: 40px; /* Tamanho ajustado */
+    width: 40px; 
     height: 40px;
     background-color: #ddd;
     border-radius: 50%;
@@ -77,13 +76,13 @@
   }
   
   .customer-profile h1 {
-    font-size: 1.2em; /* Tamanho ajustado */
+    font-size: 1.2em; 
     margin-bottom: 10px;
   }
   
   .customer-profile p {
     margin: 5px 0;
-    font-size: 0.9em; /* Tamanho ajustado */
+    font-size: 0.9em;
   }
   
   .customer-purchases {
@@ -110,12 +109,12 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
-    font-size: 1em; /* Tamanho ajustado */
+    font-size: 1em; 
   }
   .customer-history-container {
-    width: 500px; /* Aumenta a largura */
-    max-width: none; /* Remove a restrição de largura máxima */
-    height: auto; /* Ajusta a altura automaticamente */
+    width: 500px;
+    max-width: none;
+    height: auto; 
 }
 .customer-text{
     color: #333;

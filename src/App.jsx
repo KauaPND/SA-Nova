@@ -5,13 +5,13 @@ import RegisterPage from './RegisterPage';
 import CustomerHistory from './CustomerHistory';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false); // Estado para verificar se o usuário está logado
-  const [isRegistering, setIsRegistering] = useState(false); // Estado para verificar se o usuário está na página de registro
-  const [isAdmin, setIsAdmin] = useState(false); // Estado para verificar se o usuário está logado como admin
+  const [loggedIn, setLoggedIn] = useState(false); // Verifica se o usuário está logado
+  const [isRegistering, setIsRegistering] = useState(false); // Verifica se o usuário está na página de registro
+  const [isAdmin, setIsAdmin] = useState(false); // Verifica se o usuário está logado como admin
 
   // Função chamada quando o usuário faz login
   const handleLogin = () => {
-    setLoggedIn(true); // Atualiza o estado para indicar que o usuário está logado
+    setLoggedIn(true); // Mostra qual o usuário está logado
   };
 
   // Função para voltar à página de login a partir de qualquer outra página
@@ -23,7 +23,7 @@ function App() {
 
   // Função chamada quando o usuário quer ir para a página de registro
   const handleRegisterClick = () => {
-    setIsRegistering(true); // Atualiza o estado para exibir a página de registro
+    setIsRegistering(true); // Atualiza para exibir a página de registro
   };
 
   // Função chamada ao enviar o formulário de registro

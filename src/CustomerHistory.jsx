@@ -13,7 +13,7 @@ const CustomerHistory = ({ onBack }) => {
     { id: 5, name: 'Mico Leão' }
   ];
 
-  // Função para lidar com o clique em um cliente
+  // Função para entrar no perfil de um cliente
   const handleCustomerClick = (customer) => {
     if (customer.name === 'Giga Chad') {
       // Dados específicos de Giga Chad

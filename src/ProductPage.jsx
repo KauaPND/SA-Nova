@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import PaymentPage from './PaymentPage'; 
+import PaymentPage from './PaymentPage';
 import './ProductPage.css';
+import api from './api';
 
 const ProductPage = ({ onBack }) => {
   const [showPaymentPage, setShowPaymentPage] = useState(false);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    document.title = "Produtos - Lost Plushy";
+    document.title = 'Produtos - Lost Plushy';
+
+    const fetchProducts = async () => {
+      try {
+        const response = await api.get('/products');
+        console.log(response)
+        setProducts(response.data);
+      } catch (error) {
+        alert('Erro ao carregar produtos.');
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const handleCartClick = () => {
@@ -25,42 +39,25 @@ const ProductPage = ({ onBack }) => {
         </div>
         <div className="icons">
           <span role="img" aria-label="Search" className="icon">🔍</span>
-          <span role="img" aria-label="Cart" className="icon" onClick={handleCartClick}>🛒</span>
+          <span role="img" aria-label="Cart" className="icon" onClick={handleCartClick}>
+            🛒
+          </span>
         </div>
       </header>
-      
       <div className="product-list">
-        <div className="product-card">
-          <img src="./imgs/Spring.png" alt="Pelúcia Spring Trap" />
-          <div className="product-info">
-            <h3>Pelúcia Spring Trap</h3>
-            <p>R$ 52,90</p>
+        {products.map((product) => (
+          <div className="product-card" key={product.id}>
+            <img src={`${product.img}`} alt={product.name} />
+            <div className="product-info">
+              <h3>{product.name}</h3>
+              <p>R$ {product.price}</p>
+            </div>
           </div>
-        </div>
-        <div className="product-card">
-          <img src="./imgs/Golden.png" alt="Pelúcia Golden Freddy" />
-          <div className="product-info">
-            <h3>Pelúcia Golden Freddy</h3>
-            <p>R$ 60,90</p>
-          </div>
-        </div>
-        <div className="product-card">
-          <img src="./imgs/Foxy.png" alt="Pelúcia Foxy" />
-          <div className="product-info">
-            <h3>Pelúcia Foxy</h3>
-            <p>R$ 49,90</p>
-          </div>
-        </div>
-        <div className="product-card">
-          <img src="./imgs/Shadow.png" alt="Pelúcia Shadow Freddy" />
-          <div className="product-info">
-            <h3>Pelúcia Shadow Freddy</h3>
-            <p>R$ 60,90</p>
-          </div>
-        </div>
+        ))}
       </div>
-
-      <button className="backbutton" onClick={onBack}>VOLTAR</button>
+      <button className="backbutton" onClick={onBack}>
+        VOLTAR
+      </button>
     </div>
   );
 };

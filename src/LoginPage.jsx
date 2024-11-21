@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginPage.css';
+import api from './api';
 
 const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await api.post('/auth/login', { email, password });
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      onLogin();
+    } catch (error) {
+      alert('Erro ao fazer login. Verifique suas credenciais.');
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="welcome-section">
         <div className="logo">
-          <img src="./imgs/logo.png" alt="Lost Plushy Logo" /> {/* Exibe o logotipo */}
+          <img src="./imgs/logo.png" alt="Lost Plushy Logo" />
         </div>
-        
         <h1>Bem-vindo ao Lost Plushy,</h1>
         <p>
           Onde o macabro encontra o adorável e o sinistro se mistura com o reconfortante.
@@ -21,19 +35,26 @@ const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
         <div className="login-form">
           <h2>Lost Plushy</h2>
           <form>
-            {/* Campo de email */}
-            <input type="email" placeholder="Email" />
-            {/* Campo de senha */}
-            <input type="password" placeholder="Senha" />
-            {/* Botão de login para usuário */}
-            <button type="button" onClick={onLogin}>LOGAR</button>
-            {/* Link para a página de registro */}
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="button" onClick={handleLogin}>
+              LOGAR
+            </button>
             <div className="register">
               <a href="#!" onClick={onRegisterClick}>
                 Sem um login? Cadastre-se!
               </a>
             </div>
-            {/* Botão de login para admin */}
             <button type="button" className="admin-login" onClick={onAdminLogin}>
               LOGAR ADM
             </button>
@@ -42,7 +63,6 @@ const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
       </div>
     </div>
   );
-}
-
+};
 
 export default LoginPage;

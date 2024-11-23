@@ -1,0 +1,30 @@
+/* src/components/CustomerCard.css */
+.customer-card {
+     background: white;
+     border-radius: 8px;
+     padding: 20px;
+     cursor: pointer;
+     transition: transform 0.2s, box-shadow 0.2s;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   }
+   
+   .customer-card:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+   }
+   
+   .customer-header {
+     display: flex;
+     align-items: center;
+     margin-bottom: 15px;
+   }
+   
+   .customer-avatar {
+     width: 60px;
+     height: 60px;
+     border-radius: 50%;
+     background: #e0e0e0;
+     display: flex;
+     align-items: center ;
+     justify-content: center;
+}

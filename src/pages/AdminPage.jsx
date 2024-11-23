@@ -1,3 +1,4 @@
+// src/pages/AdminPage.jsx
 import { useNavigate } from 'react-router-dom';
 
 const AdminPage = () => {
@@ -23,6 +24,13 @@ const AdminPage = () => {
         </button>
         
         <button 
+          onClick={() => navigate('/admin/customers')} 
+          className="admin-button"
+        >
+          Histórico de Clientes
+        </button>
+        
+        <button 
           onClick={handleLogout} 
           className="admin-button logout-button"
         >
@@ -33,4 +41,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage
+export default AdminPage;

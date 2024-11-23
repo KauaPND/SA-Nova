@@ -9,6 +9,7 @@ import PrivateRoute from './routes/privateRoutes';
 import AdminRoute from './routes/adminRoutes';
 import './App.css';
 import CartPage from './pages/CartPage';
+import CustomerListPage from './pages/CustomerListPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route element={<AdminRoute />}>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/admin/create-product" element={<CreateProductPage />} />
+          <Route path="/admin/customers" element={<CustomerListPage />} />
         </Route>
 
         {/* Fallback route */}

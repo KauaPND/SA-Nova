@@ -1,8 +1,8 @@
-const express = require('express');
-const { getCustomerHistory, addCustomerHistory } = require('../controller/customerController');
-const router = express.Router();
+import { Router } from 'express';
+import { getCustomerHistory, addCustomerHistory } from '../controller/customerController';
+const router = Router();
 
 router.get('/', getCustomerHistory);
 router.post('/', addCustomerHistory);
 
-module.exports = router;
+export default router;

@@ -1,53 +1,40 @@
-import React, { useState } from 'react';
-import LoginPage from './LoginPage';
-import ProductPage from './ProductPage';
-import RegisterPage from './RegisterPage';
-import CustomerHistory from './CustomerHistory';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ProductPage from './pages/ProductPage';
+import PaymentPage from './pages/PaymentPage';
+import AdminPage from './pages/AdminPage';
+import CreateProductPage from './pages/createProduct';
+import PrivateRoute from './routes/privateRoutes';
+import AdminRoute from './routes/adminRoutes';
+import './App.css';
+import CartPage from './pages/CartPage';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false); // Verifica se o usuário está logado
-  const [isRegistering, setIsRegistering] = useState(false); // Verifica se o usuário está na página de registro
-  const [isAdmin, setIsAdmin] = useState(false); // Verifica se o usuário está logado como admin
-
-  // Função chamada quando o usuário faz login
-  const handleLogin = () => {
-    setLoggedIn(true); // Mostra qual o usuário está logado
-  };
-
-  // Função para voltar à página de login a partir de qualquer outra página
-  const handleBack = () => {
-    setLoggedIn(false);
-    setIsRegistering(false);
-    setIsAdmin(false); // Volta para o estado inicial e remove o estado admin
-  };
-
-  // Função chamada quando o usuário quer ir para a página de registro
-  const handleRegisterClick = () => {
-    setIsRegistering(true); // Atualiza para exibir a página de registro
-  };
-
-  // Função chamada ao enviar o formulário de registro
-  const handleRegisterSubmit = () => {
-    setIsRegistering(false); // Após o registro, volta para a página de login
-  };
-
-  // Função chamada quando o usuário clica em "Logar ADM"
-  const handleAdminLogin = () => {
-    setIsAdmin(true); // Atualiza o estado para exibir a página de admin
-  };
-
-  // Renderiza as diferentes páginas com base no estado atual
   return (
     <div className="App">
-      {isAdmin ? (
-        <CustomerHistory onBack={handleBack} /> // Exibe a página de admin
-      ) : loggedIn ? (
-        <ProductPage onBack={handleBack} /> // Exibe a página de produtos
-      ) : isRegistering ? (
-        <RegisterPage onRegisterSubmit={handleRegisterSubmit} /> // Exibe a página de registro
-      ) : (
-        <LoginPage onLogin={handleLogin} onRegisterClick={handleRegisterClick} onAdminLogin={handleAdminLogin} /> // Exibe a página de login
-      )}
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+
+        {/* Protected Routes */}
+        <Route element={<PrivateRoute />}>
+        <Route path="/cart" element={<CartPage />} />
+          <Route path="/products" element={<ProductPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route element={<AdminRoute />}>
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/create-product" element={<CreateProductPage />} />
+        </Route>
+
+        {/* Fallback route */}
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
     </div>
   );
 }

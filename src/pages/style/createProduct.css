@@ -1,5 +1,9 @@
+input, textarea{
+  background: white;
+  
+}
 .create-product-container {
-    max-width: 400px;
+    width: 900px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
@@ -13,11 +17,17 @@
   }
   
   .create-product-container form {
+    width: 90%;
+    margin: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .create-product-container input {
+    width: 98%;
+     margin: auto;
     margin-bottom: 15px;
     padding: 10px;
     font-size: 16px;
@@ -56,4 +66,14 @@
 .create-product-container img {
   max-width: 100px;
   height: auto;
+}
+textarea{
+  resize: vertical;
+  width: 100%;
+     margin: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }

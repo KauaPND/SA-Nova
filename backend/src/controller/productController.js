@@ -1,16 +1,16 @@
-const pool = require('../db');
+import { query } from '../db';
 
-exports.getProducts = async (req, res) => {
+export async function getProducts(req, res) {
   try {
-    const result = await pool.query('SELECT * FROM products');
+    const result = await query('SELECT * FROM products');
     res.status(200).json(result.rows);
   } catch (error) {
     console.error('Erro ao buscar produtos:', error);
     res.status(500).json({ error: 'Erro ao buscar produtos' });
   }
-};
+}
 
-exports.addProduct = async (req, res) => {
+export async function addProduct(req, res) {
   const { name, price, imageUrl } = req.body;
 
   if (!name || !price || !imageUrl) {
@@ -18,7 +18,7 @@ exports.addProduct = async (req, res) => {
   }
 
   try {
-    const result = await pool.query(
+    const result = await query(
       'INSERT INTO products (name, price, image_url) VALUES ($1, $2, $3) RETURNING *',
       [name, price, imageUrl]
     );
@@ -27,4 +27,4 @@ exports.addProduct = async (req, res) => {
     console.error('Erro ao criar produto:', error);
     res.status(500).json({ error: 'Erro ao criar produto' });
   }
-};
+}

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import CreateProduct from './createProduct';
-import './CustomerHistory.css';
+import './style/CustomerHistory.css';
 
 const CustomerHistory = ({ onBack }) => {
   const [creatingProduct, setCreatingProduct] = useState(false);

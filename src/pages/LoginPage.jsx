@@ -1,19 +1,37 @@
-import React, { useState } from 'react';
-import './LoginPage.css';
-import api from './api';
+// src/pages/LoginPage.jsx
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../api';
+import './style/LoginPage.css';
 
-const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
+const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
     try {
       const response = await api.post('/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      onLogin();
+      
+      // Redireciona baseado no role do usuário
+      if (response.data.user.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/products');
+      }
     } catch (error) {
-      alert('Erro ao fazer login. Verifique suas credenciais.');
+      console.error('Erro no login:', error);
+      setError('Erro ao fazer login. Verifique suas credenciais.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -21,43 +39,42 @@ const LoginPage = ({ onLogin, onRegisterClick, onAdminLogin }) => {
     <div className="login-page">
       <div className="welcome-section">
         <div className="logo">
-          <img src="./imgs/logo.png" alt="Lost Plushy Logo" />
+          <img src="/imgs/logo.png" alt="Lost Plushy Logo" />
         </div>
-        <h1>Bem-vindo ao Lost Plushy,</h1>
+        <h1>Bem-vindo ao Lost Plushy</h1>
         <p>
           Onde o macabro encontra o adorável e o sinistro se mistura com o reconfortante.
           Somos uma empresa dedicada a criar pelúcias que desafiam as convenções do mundo
-          do entretenimento infantil. Aqui, abraçamos o lado mais sombrio da imaginação,
-          transformando o medo em algo que você pode abraçar.
+          do entretenimento infantil.
         </p>
       </div>
       <div className="login-section">
         <div className="login-form">
           <h2>Lost Plushy</h2>
-          <form>
+          <form onSubmit={handleLogin}>
+            {error && <div className="error-message">{error}</div>}
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <input
               type="password"
               placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
-            <button type="button" onClick={handleLogin}>
-              LOGAR
+            <button type="submit" disabled={loading}>
+              {loading ? 'Carregando...' : 'LOGAR'}
             </button>
             <div className="register">
-              <a href="#!" onClick={onRegisterClick}>
+              <button type="button" onClick={() => navigate('/register')}>
                 Sem um login? Cadastre-se!
-              </a>
+              </button>
             </div>
-            <button type="button" className="admin-login" onClick={onAdminLogin}>
-              LOGAR ADM
-            </button>
           </form>
         </div>
       </div>

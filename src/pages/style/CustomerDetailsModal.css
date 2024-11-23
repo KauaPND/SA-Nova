@@ -30,9 +30,9 @@
    }
    
    .close-button {
-     background: none;
-     border: none;
-     font-size: 24px;
+     background: rgba(214, 213, 213, 0.014);
+     color: red;
+     font-size: 30px;
      cursor: pointer;
    }
    
